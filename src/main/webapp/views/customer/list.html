@@ -14,7 +14,6 @@
 
 <table border="1">
     <tr>
-<!--        <th>ID</th>-->
         <th>First name</th>
         <th>Last name</th>
         <th>Province</th>
@@ -23,10 +22,10 @@
     </tr>
     <th:block th:each="customer : ${customers}">
         <tr>
-<!--            <td th:text="${customer.id}"></td>-->
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
-            <td th:text="${customer.province}"></td>
+            <td th:if="${customer.province}" th:text="${customer.province.name}"></td>
+            <td th:unless="${customer.province}"></td>
             <td><a th:href="@{/edit-customer/__${customer.id}__ }">Edit</a></td>
             <td><a th:href="@{/delete-customer/__${customer.id}__ }">Delete</a></td>
         </tr>
